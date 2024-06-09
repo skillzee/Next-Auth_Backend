@@ -1,7 +1,7 @@
 
 function page() {
   return (
-    <div>page</div>
+    <div>Login Page</div>
   )
 }
 
