@@ -18,6 +18,9 @@ export async function POST(request: NextRequest) {
             data: user
         })
     } catch (error) {
-        
+        return NextResponse.json({
+            success: false,
+            message: "Error in me route"
+        })
     }
 }
