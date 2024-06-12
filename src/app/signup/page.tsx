@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import {toast} from "react-hot-toast"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 export default function SignupPage() {
   const router = useRouter()
@@ -41,6 +42,43 @@ export default function SignupPage() {
   }, [user])
   
   return (
-    <div>Sign up Page</div>
+    <div className=" flex flex-col items-center justify-center min-h-screen py-2">
+      <h1>
+        {loading ? "Processing": "Signup"}
+      </h1>
+      <label htmlFor="username">Username</label>
+      <input
+      className="p-2 border border-gray-300 rounded-md text-black"
+      id="username"
+      value={user.username}
+      onChange={(e)=>setuser({...user, username:e.target.value})}
+      placeholder="username"
+      type="text" />
+      <label htmlFor="username">Email</label>
+      <input
+      className="p-2 border border-gray-300 rounded-md text-black"
+      id="email"
+      value={user.email}
+      onChange={(e)=>setuser({...user, email:e.target.value})}
+      placeholder="Email"
+      type="text" />
+      <label htmlFor="username">Password</label>
+      <input
+      className="p-2 border border-gray-300 rounded-md text-black"
+      id="password"
+      value={user.password}
+      onChange={(e)=>setuser({...user, password:e.target.value})}
+      placeholder="Password"
+      type="password" />
+      <button
+      onClick={onSignup} 
+      className=" p-2 border border-gray-300 rounded-lg mb-4 mt-5"
+      disabled={buttonDisabled || loading}
+      >
+        {buttonDisabled ? "Please fill all the fields": "Signup"}
+        
+      </button>
+      <Link href={"/login"}>Visit Login Page</Link>
+    </div>
   )
 }
